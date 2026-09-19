@@ -46,6 +46,7 @@ const TabContent = ({
   openSettingsDialog,
   setOpenSettingsDialog,
   selectedAppointment,
+  setSelectedAppointment,
   handleSelectAppointment,
   handleDeleteAppointment,
   handleAddAppointment,
