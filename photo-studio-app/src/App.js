@@ -27,7 +27,8 @@ import {
   PhotoCamera as PhotoCameraIcon,
   Group as GroupIcon,
   BabyChangingStation as BabyChangingStationIcon,
-  ShoppingBasket as ShoppingBasketIcon
+  ShoppingBasket as ShoppingBasketIcon,
+  TrendingUp as TrendingUpIcon
 } from '@mui/icons-material';
 import { format, parseISO, addDays, isSameDay } from 'date-fns';
 import { fr } from 'date-fns/locale';
@@ -43,6 +44,7 @@ import StatsDialog from './components/StatsDialog';
 import SettingsDialog from './components/SettingsDialog';
 import AppBarComponent from './components/AppBarComponent';
 import TabContent from './components/TabContent';
+import ConsultingDashboard from './components/ConsultingDashboard';
 
 const App = () => {
   // États principaux
@@ -545,6 +547,7 @@ const App = () => {
             <Tab icon={<PersonIcon />} label="Clients sans rendez-vous" />
             <Tab icon={<AccessTimeIcon />} label="Aujourd'hui" />
             <Tab icon={<CameraIcon />} label="Nouveau" />
+            <Tab icon={<TrendingUpIcon />} label="Consulting" />
           </Tabs>
           
           <Box sx={{ mt: 3 }}>
@@ -636,6 +639,29 @@ const App = () => {
         generateDemoData={generateDemoData}
         resetData={resetData}
       />
+
+      {/* Consulting Dashboard */}
+      <Dialog
+        open={selectedTab === 4}
+        onClose={() => setSelectedTab(0)}
+        maxWidth="xl"
+        fullWidth
+        PaperProps={{ sx: { height: '90vh' } }}
+      >
+        <DialogTitle>
+          <Typography variant="h5" fontWeight="bold">
+            📊 Tableau de Bord Consulting - Optimisation Studio Photo
+          </Typography>
+        </DialogTitle>
+        <DialogContent dividers sx={{ p: 0, height: 'calc(90vh - 100px)' }}>
+          <ConsultingDashboard />
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={() => setSelectedTab(0)} color="primary">
+            Fermer
+          </Button>
+        </DialogActions>
+      </Dialog>
 
       {/* Notification */}
       <Snackbar
